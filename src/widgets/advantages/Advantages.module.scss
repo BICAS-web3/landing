@@ -1,0 +1,139 @@
+@use '../../shared/styles/mixins/breakpoints.scss';
+
+._ {
+    position: relative;
+}
+
+.capsule {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    position: absolute !important;
+    left: 0;
+    top: 50%;
+    object-fit: contain;
+    transform: translate(-25%, -50%);
+
+    & img {
+        object-fit: contain;
+    }
+}
+
+.grid {
+    position: relative;
+    width: 900px;
+    padding: 80px 0 80px;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    z-index: 2;
+}
+
+.advantage {
+    width: 100%;
+    padding: 20px 24px 30px;
+    border-radius: 8px;
+    color: var(--color-concrete);
+    background: rgba(112, 112, 112, 0.18);
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(9, 11, 9, 0.5);
+        font-size: 28px;
+
+        & svg {
+            width: 1em;
+            height: 1em;
+            color: var(--color-green);
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+        font-size: 28px;
+        line-height: 34px;
+        font-weight: 500;
+    }
+
+    &__description {
+        max-width: 80%;
+        margin-top: 12px;
+        font-size: 18px;
+        line-height: 24px;
+        color: var(--color-dove-gray);
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .grid {
+        width: 800px;
+        gap: 40px;
+    }
+}
+
+@include breakpoints.desktop {
+    .advantage {
+        &__title {
+            font-size: 24px;
+        }
+
+        &__description {
+            // font-size: /;
+        }
+    }
+
+    .capsule {
+        transform: translate(-35%, -50%);
+    }
+}
+
+@include breakpoints.laptop {}
+
+@include breakpoints.tablet {
+    .capsule {
+        display: none;
+    }
+
+    .grid {
+        width: 100%;
+        padding: 0;
+        gap: 36px;
+    }
+}
+
+@include breakpoints.mobile {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .advantage {
+        padding: 20px;
+
+        &__title {
+            font-size: 22px;
+            line-height: 24px;
+        }
+
+        &__description {
+            font-size: 14px;
+            line-height: 18px;
+            color: var(--color-dove-gray);
+        }
+
+        &__icon {
+            width: 48px;
+            height: 48px;
+
+            & svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}

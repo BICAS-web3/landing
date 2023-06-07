@@ -1,0 +1,66 @@
+$desktop: 1400;
+$laptop: 1279;
+$tablet: 1001;
+$phone-landscape: 767;
+$phone: 575;
+$mobile: 767;
+
+@mixin media-max-width($media) {
+    @media only screen and (max-width: #{$media}px) {
+        @content;
+    }
+}
+
+@mixin media-min-width($media) {
+    @media only screen and (min-width: #{$media}px) {
+        @content;
+    }
+}
+
+@mixin media-range-width($media-min, $media-max) {
+    @media only screen and (min-width: #{$media-min}px) and (max-width: #{$media-max}px) {
+        @content;
+    }
+}
+
+@mixin media-max-height($media) {
+    @media only screen and (max-height: #{$media}px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @include media-max-width($desktop) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @include media-max-width($laptop) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @include media-max-width($tablet) {
+        @content;
+    }
+}
+
+@mixin phone-landscape {
+    @include media-max-width($phone-landscape) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @include media-max-width($phone) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @include media-max-width($mobile) {
+        @content;
+    }
+}

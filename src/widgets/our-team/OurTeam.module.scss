@@ -1,0 +1,154 @@
+@use '../../shared/styles/mixins/breakpoints.scss';
+
+._ {
+    position: relative;
+    padding: 0 20px;
+
+    --gap: 32px;
+    --slides: 4;
+
+    :global(.embla) {
+        overflow: hidden;
+    }
+
+    :global(.embla__container) {
+        display: flex;
+    }
+
+    :global(.embla__slide) {
+        min-width: 0;
+        flex: 0 0 calc((100% - var(--gap) * (var(--slides) - 1)) / var(--slides));
+        margin-right: var(--gap);
+    }
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+
+    &_prev {
+        left: 20px;
+        transform: translate(-50%, -50%);
+    }
+
+    &_next {
+        right: 20px;
+        transform: translate(50%, -50%);
+    }
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    backdrop-filter: blur(20px);
+    background-color: rgba(9, 11, 9, 0.5);
+
+    & svg {
+        width: 16px;
+        height: 16px;
+        color: var(--color-green);
+    }
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    background: rgba(51, 48, 48, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+
+    &__assets {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        overflow: hidden;
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+    }
+
+    &__details {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    &__name {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        color: var(--color-alto);
+    }
+
+    &__role {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: var(--color-dove-gray);
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5em;
+    }
+
+    &__social {
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        color: var(--color-alto);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: .3s ease;
+
+        &:hover {
+            color: var(--color-green);
+        }
+
+        & svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+    }
+}
+
+@include breakpoints.desktop {
+    ._ {
+        --gap: 24px;
+        --slides: 3;
+    }
+}
+
+@include breakpoints.mobile {
+    ._ {
+        overflow: visible;
+
+        :global(.embla) {
+            overflow: visible;
+        }
+
+        :global(.embla__slide) {
+            flex: 0 0 220px;
+            margin-right: 16px;
+        }
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .slide {}
+}

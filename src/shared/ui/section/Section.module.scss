@@ -1,0 +1,77 @@
+@use '../../styles/mixins/breakpoints.scss';
+
+._ {
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.header {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin-bottom: 32px;
+    column-gap: 80px;
+}
+
+.title {
+    font-size: 64px;
+    line-height: 82px;
+    font-weight: 500;
+    color: var(--color-concrete);
+}
+
+.description {
+    display: inline-block;
+    max-width: 660px;
+    color: var(--color-dove-gray);
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.body {
+    display: block;
+}
+
+@include breakpoints.desktop {
+    ._ {
+        padding: 60px 0;
+    }
+
+    .title {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
+    .description {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@include breakpoints.tablet {
+    ._ {
+        padding: 40px 0;
+    }
+
+    .header {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .title {
+        font-size: 42px;
+        line-height: 48px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+}
+
+@include breakpoints.mobile {
+    .title {
+        font-size: 36px;
+        line-height: 42px;
+    }
+}
